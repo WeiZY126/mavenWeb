@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            border: red;
+        }
+    </style>
+</head>
+<body>
+<div id="mask">
+    <!--图片-->
+    <img :src="imgArr[this.index]"><br>
+    <!--左箭头-->
+    <a v-show="index!=0" @click="pri">上一张</a></t>
+    <!--右箭头-->
+    <a v-show="index<imgArr.length-1" @click="next">下一张</a>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#mask',
+        data:{
+            imgArr:["img\\image1.png","img\\image2.png","img\\image3.png"],
+            index:0,
+        },
+        methods:{
+            pri:function () {
+                    this.index--;
+            },
+            next:function () {
+                    this.index++;
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            border: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="txt" @keyup.enter="add">
+    <ul>
+        <li v-for="(item,index) in datas">{{item}}
+            <input type="button" value="del" @click="rm(index)">
+        </li>
+    </ul>
+    <br>
+    <p v-text="datas.length" v-show="datas.length!=0"></p>
+    <input type="button" value="清空" @click="rmall" v-show="datas.length!=0">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            datas:[],
+            txt:""
+        },
+        methods:{
+            add:function () {
+                this.datas.push(this.txt);
+                this.txt=""
+            },
+            rm:function (ind) {
+                this.datas.splice(ind,1)
+            },
+            rmall:function () {
+                this.datas.splice(0,this.datas.length)
+            }
+        }
+    })
+</script>
+</body>
+</html>

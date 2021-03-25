@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="事件绑定1" v-on:click="hello1"></br>
+    <input type="button" value="事件绑定2" @click="hello1"></br>
+    <input type="button" value="双击事件" @dblclick="hello1"></br>
+    <h2 @click="changeFood">{{food}}</h2>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            food:"肉"
+        },
+        methods: {
+            hello1:function () {
+                alert("你好")
+            },
+            changeFood:function () {
+              // console.log(this.food)
+                this.food+="..."
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

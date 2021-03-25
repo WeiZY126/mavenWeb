@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            border: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="添加数据" @click="add">
+    <input type="button" value="移除数据" @click="rm">
+    <ul>
+        <li v-for="(item,index) in arr">
+            {{index+1}}:{{item}}
+        </li>
+    </ul>
+    <h2 v-for="it in objArr" v-bind:title="it.name">{{it.name}}</h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{
+            arr:["北京","上海","广州","深圳"],
+            objArr:[
+                {name:"北京"},
+                {name:"上海"}
+            ]
+        },
+        methods:{
+            add:function () {
+                this.objArr.push({name:"成都"});
+            },
+            rm:function () {
+                this.objArr.shift()
+            }
+        }
+    })
+</script>
+</body>
+</html>
